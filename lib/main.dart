@@ -15,10 +15,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueGrey),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'BLoC'),
     );
   }
 }
@@ -51,7 +51,7 @@ final counterCubit = CounterCubit();
                   'You have pushed the button this many times:',
                 ),
                 BlocBuilder<CounterCubit, int>(
-                  bloc: CounterCubit(),
+                  bloc: counterCubit,
                   builder: (context, counter) {
                     return Text(
                       '$counter',
@@ -62,10 +62,21 @@ final counterCubit = CounterCubit();
               ],
             ),
           ),
-          floatingActionButton: FloatingActionButton(
-            onPressed: () => counterCubit.increment(),
-            tooltip: 'Increment',
-            child: const Icon(Icons.add),
+          floatingActionButton: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              FloatingActionButton(
+                onPressed: () => counterCubit.increment(),
+                tooltip: 'Increment',
+                child: const Icon(Icons.add),
+              ),
+              const SizedBox(width: 25,),
+              FloatingActionButton(
+                onPressed: () => counterCubit.decrement(),
+                tooltip: 'Decrement',
+                child: const Icon(Icons.remove),
+              ),
+            ],
           ), 
         );
       }
