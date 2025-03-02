@@ -16,6 +16,8 @@ class _IncDecScreenState extends State<IncDecScreen> {
     final counterCubit = BlocProvider.of<CounterCubit>(context);
     return Scaffold(
       appBar: AppBar(
+        title: Text('Cubit Screen'),
+        centerTitle: true,
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
       body: Center(
